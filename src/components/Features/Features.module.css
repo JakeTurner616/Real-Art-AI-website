@@ -1,15 +1,29 @@
+/* Styles */
 .features {
-    background-color: #fff;
-    color: #333;
-    padding: 20px;
-    margin-top: 20px;
+  background-color: #f8f8f8;
+  color: #333;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.textContainer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.featureGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.feature {
+  width: calc(50% - 20px); /* 50% width with 10px spacing between features */
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .feature {
+    width: 100%; /* Set width to 100% for features on smaller screens */
   }
-  
-  .features ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .features li {
-    margin-bottom: 10px;
-  }
+}
