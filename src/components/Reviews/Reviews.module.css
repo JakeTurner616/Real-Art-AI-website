@@ -1,0 +1,98 @@
+/* Reviews.module.css */
+.toggleButton {
+  cursor: pointer;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.toggleButton:hover {
+  background-color: #0056b3;
+}
+
+.fadeIn, .fadeOut {
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards; /* Updated to ensure animations complete and hold state */
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
+
+.fadeOut {
+  animation-name: fadeOut;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.review {
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  text-align: left;
+}
+.reviewAuthor {
+  text-align: left;
+}
+.reviewAvatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+.reviewBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewAuthor {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.reviewRatingDate {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.reviewRating {
+  margin-right: 10px;
+  color: #ffc107; /* Star rating color */
+}
+
+.reviewDate {
+  color: #6c757d; /* Date text color */
+  font-size: 0.875rem;
+}
+
+.reviewContent {
+  font-size: 0.875rem;
+  color: #495057; /* Content text color */
+}

@@ -1,0 +1,15 @@
+.features {
+    background-color: #fff;
+    color: #333;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  .features ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .features li {
+    margin-bottom: 10px;
+  }
