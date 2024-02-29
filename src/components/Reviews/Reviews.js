@@ -41,24 +41,56 @@ const googlePlayReviews = [
 const Reviews = () => {
   const [view, setView] = useState('ios');
 
-  const toggleView = () => {
-    setView(view === 'ios' ? 'googlePlay' : 'ios');
-  };
-
   // Use a unique key to force re-rendering and trigger animations
   const containerKey = view === 'ios' ? 'iosContainer' : 'googlePlayContainer';
 
+  const handleChange = (event) => {
+    setView(event.target.value);
+  };
+
   return (
     <div className={styles.reviews}>
-      <button onClick={toggleView} className={styles.toggleButton}>
-        {view === 'ios' ? 'Show Google Play Reviews' : 'Show iOS Reviews'}
-      </button>
+      <div id="inputContainer" className={styles.inputContainer}>
+        <fieldset id="aspectRatio--group" className={`${styles.inputGroup} ${styles.segmentedControl}`}>
+          <div className={styles.segmentedControlGroup}>
+            <input 
+              type="radio" 
+              name="platform" 
+              id="platform-ios" 
+              value="ios" 
+              checked={view === 'ios'} 
+              onChange={handleChange} 
+              className={styles.visuallyHidden} 
+            />
+            <label htmlFor="platform-ios" className={styles.label}>
+              <img src="/apple.svg" alt="iOS Reviews" width="30" height="30" />
+            </label>
+
+            <input 
+              type="radio" 
+              name="platform" 
+              id="platform-googlePlay" 
+              value="googlePlay" 
+              checked={view === 'googlePlay'} 
+              onChange={handleChange} 
+              className={styles.visuallyHidden}
+            />
+            <label htmlFor="platform-googlePlay" className={styles.label}>
+              <img src="/android.svg" alt="Google Play Reviews" width="30" height="30" />
+            </label>
+          </div>
+        </fieldset>
+      </div>
       <div key={containerKey} className={`${styles.reviewContainer} ${styles.fadeIn}`}>
+        {/* Conditional rendering based on the selected view */}
         {view === 'ios' ? iosReviews.map((review, index) => (
           <div key={index} className={`${styles.review} ${styles.iosReview}`}>
-            <h4>{review.title} - {'⭐'.repeat(parseInt(review.rating))}</h4>
+            <h4>{review.title}</h4>
+            <div className={styles.reviewRating}>{'⭐'.repeat(parseInt(review.rating))}</div>
             <p>{review.content}</p>
-            <small>By {review.author} on {new Date(review.date).toLocaleDateString()}</small>
+            <div className={styles.reviewAuthorDate}>
+              <small>By {review.author} on {new Date(review.date).toLocaleDateString()}</small>
+            </div>
           </div>
         )) : googlePlayReviews.map((review, index) => (
           <div key={index} className={`${styles.review} ${styles.androidReview}`}>

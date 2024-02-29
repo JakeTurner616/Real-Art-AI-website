@@ -60,6 +60,27 @@
 .reviewAuthor {
   text-align: left;
 }
+.iosReview .reviewFooter {
+  display: flex;
+  flex-direction: column; /* Stack the elements vertically */
+  align-items: flex-start; /* Align items to the start of the flex container */
+  margin-top: 10px; /* Add some space above the author details */
+}
+.iosReview {
+  display: block; /* Change from flex to block to stack elements */
+}
+.iosReview h4 {
+  margin-top: 0; /* Reduce the top margin as needed */
+  margin-bottom: 8px; /* Reduce the bottom margin to bring the title closer to the stars */
+  /* Other styling for the title */
+}
+.iosReview .reviewAuthorDate {
+  /* Styling for author and date */
+  margin-top: 8px; /* Adjust as needed */
+}
+.iosReview .reviewFooter small {
+  margin: 2px 0; /* Add a small margin between the author and date */
+}
 .reviewAvatar img {
   width: 80px;
   height: 80px;
@@ -70,7 +91,10 @@
   display: flex;
   flex-direction: column;
 }
-
+.disabledSegment {
+  cursor: not-allowed; /* Change cursor to indicate disabled state */
+  opacity: 0.5; /* Grey out the button */
+}
 .reviewAuthor {
   font-weight: bold;
   margin-bottom: 5px;
@@ -91,8 +115,138 @@
   color: #6c757d; /* Date text color */
   font-size: 0.875rem;
 }
+.inputContainer {
+  display: flex;
+  justify-content: center; /* Center the segmented control horizontally */
+  padding: 1em; /* Add some padding around the segmented control */
+}
 
+.inputGroup {
+  display: block;
+  margin: 0 auto; /* Center the fieldset */
+}
+
+.segmentedControl {
+  display: flex;
+  border: 1px solid #ccc; /* Add a border around the segmented control */
+  border-radius: 5px; /* Rounded corners for the segmented control */
+  overflow: hidden; /* Ensure the child elements don't overflow */
+}
+
+.segmentedControlGroup {
+  display: flex;
+}
+
+.visuallyHidden {
+  /* Visually hide the input but remain accessible to screen readers */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0.5em 1em; /* Adjust padding as needed */
+  background-color: #f0f0f0; /* Light grey background */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+/* Style for when the radio is checked */
+input:checked + .label {
+  background-color: #007bff; /* Change color when selected */
+  color: white; /* Change text color when selected */
+}
+
+/* Optional: Add styles for hover effect */
+.label:hover {
+  background-color: #0056b3; /* Darker shade for hover effect */
+}
 .reviewContent {
   font-size: 0.875rem;
   color: #495057; /* Content text color */
+}
+.segmentedControl {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0; /* Light grey background */
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.highlight {
+  position: absolute;
+  background-color: #007bff; /* Active color: blue */
+  transition: left 0.3s ease-out; /* Smooth transition for moving highlight */
+  height: calc(100% - 10px); /* Slightly smaller height for the rounded effect */
+  width: calc(50% - 5px); /* Adjust width to match the button size, accounting for gaps */
+  border-radius: 5px; /* Rounded corners */
+  top: 5px; /* Center vertically within the segmentedControl */
+  z-index: 0; /* Ensure it's below the text/buttons */
+}
+
+/* Update hover and active styles for labels */
+.label:hover, input:not(:checked) + .label:hover {
+  background-color: #a7a7a744; /* Hover color: light grey */
+}
+
+input:checked + .label {
+  background-color: #007bff; /* Active color: blue */
+  color: white;
+  font-weight: bold; /* Optional: makes the text bold when selected */
+}
+
+/* Ensure that the labels are positioned above the highlight */
+.label {
+  position: relative;
+  z-index: 1;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0.5em 1em; /* Adjust padding as needed */
+  background-color: #f0f0f0; /* Default background */
+  border-radius: 5px; /* Rounded corners for labels as well */
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+
+/* Adjustments for mobile responsiveness (if needed) */
+@media (max-width: 768px) {
+  .segmentedControl {
+    flex-direction: column; /* Stack the buttons vertically on smaller screens */
+  }
+  .highlight {
+    width: calc(100% - 10px); /* Full width for the highlight */
+    top: 0;
+    left: 5px; /* Adjust left positioning for vertical stacking */
+  }
+  .highlightIos, .highlightGooglePlay {
+    left: 0; /* Adjust highlight positioning for vertical layout */
+  }
+}
+.highlightIos {
+  left: 0%; /* Position highlight on the left for iOS */
+}
+
+.highlightGooglePlay {
+  left: 50%; /* Move highlight to the right for Google Play */
+}
+
+button {
+  background: none;
+  border: none;
+  position: relative;
+  z-index: 1; /* Ensure button text is above the highlight */
 }

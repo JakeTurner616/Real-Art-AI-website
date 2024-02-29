@@ -1,0 +1,105 @@
+.galleryThumbnails {
+  display: flex;
+  overflow-x: auto; /* Allows horizontal scrolling */
+  overflow-y: hidden; /* Prevents vertical scrolling */
+  padding: 20px 0; /* Adjust padding for spacing */
+  gap: 10px; /* Adds space between thumbnails */
+  scroll-snap-type: x mandatory; /* Enables snapping behavior */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on webkit browsers */
+  justify-content: center; /* Center the thumbnails horizontally */
+}
+
+.thumbnail {
+  flex: 0 0 auto; /* Thumbnails do not grow or shrink but are based on content width */
+  width: 80vw; /* Responsive width, adjust based on preference */
+  max-width: 300px; /* Maximum thumbnail width */
+  height: auto; /* Adjust height automatically to maintain aspect ratio */
+  cursor: pointer;
+  object-fit: cover; /* Ensures thumbnails maintain aspect ratio */
+  border-radius: 4px; /* Rounded corners for aesthetics */
+  scroll-snap-align: center; /* Ensures the thumbnail snaps cleanly into place */
+}
+@media (hover: none) and (pointer: coarse) {
+  /* Styles for devices without hover capability (usually touchscreens) */
+  .thumbnail {
+    pointer-events: none; /* Disables clicking */
+    transform: none;
+  }
+}
+.thumbnail:hover {
+  transform: scale(1.1); /* Scales up thumbnail on hover */
+  z-index: 10; /* Ensures the scaled thumbnail overlaps neighbors slightly */
+}
+
+.fullScreenModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 40px; /* Increased padding to provide more space */
+  box-sizing: border-box;
+  overflow: auto; /* Allows scrolling if the image is still too large */
+  z-index: 1000;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: row; /* Change to row to align items horizontally */
+  align-items: center;
+  justify-content: space-between; /* This will place the prev and next buttons on the sides */
+  max-width: calc(100vw - 80px); /* Adjust based on padding */
+  max-height: calc(100vh - 80px);
+  position: relative; /* Ensures absolute positioning for children */
+}
+
+.imageContainer {
+  position: relative; /* Establishes a new positioning context */
+  display: inline-flex; /* Aligns children in a row and allows the container to fit the image size */
+  align-items: center; /* Centers items vertically */
+}
+
+.fullScreenImage {
+  display: block; /* Ensures the image does not have extra space around it */
+  max-width: calc(100vw - 80px); /* Adjusts image size within the viewport */
+  max-height: calc(100vh - 80px); /* Adjusts image size within the viewport */
+  width: auto; /* Maintains aspect ratio */
+  height: auto; /* Maintains aspect ratio */
+  object-fit: contain; /* Ensures the image fits within its bounds */
+}
+
+.closeButton {
+  position: fixed; /* Fixed position within the modal */
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+.prevButton, .nextButton {
+  position: absolute; /* Positions the buttons absolutely within `.imageContainer` */
+  top: 50%; /* Aligns buttons vertically to the center of the container */
+  transform: translateY(-50%); /* Centers buttons vertically */
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.prevButton {
+  left: 0; /* Positions the previous button to the left edge of the image container */
+}
+
+.nextButton {
+  right: 0; /* Positions the next button to the right edge of the image container */
+}
+
+.prevButton:disabled, .nextButton:disabled {
+  color: grey; /* Indicate the button is disabled */
+}
