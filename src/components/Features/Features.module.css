@@ -1,14 +1,19 @@
-/* Styles */
+/* Features.module.css */
+
 .features {
   background-color: #f8f8f8;
   color: #333;
   padding: 20px;
   margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap; /* Allow flex items to wrap */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
 }
 
 .textContainer {
   max-width: 800px;
-  margin: 0 auto;
+  margin-right: 20px; /* Add margin to the right to create space */
 }
 
 .featureGrid {
@@ -22,8 +27,27 @@
   margin-bottom: 20px;
 }
 
+.imageComparisonContainer {
+  max-width: 550px; /* Max width for horizontal layout */
+  margin-right: 20px; /* Add margin to the right to create space */
+  flex: 1; /* Allow image comparison to take remaining space */
+  min-width: 550px; /* Set minimum width for the image comparison container */
+  padding: 50px;
+}
+
 @media screen and (max-width: 768px) {
-  .feature {
-    width: 100%; /* Set width to 100% for features on smaller screens */
+  .features {
+    flex-direction: column; /* Stack elements vertically on mobile */
+    align-items: center; /* Center items vertically on mobile */
+  }
+
+  .textContainer {
+    margin: 0; /* Remove margin */
+  }
+
+  .imageComparisonContainer {
+    max-width: 100%; /* Allow image comparison to take full width on mobile */
+    margin-right: 0; /* Remove right margin on mobile */
+    margin-top: 20px; /* Add margin top on mobile */
   }
 }

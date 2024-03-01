@@ -1,8 +1,22 @@
 import React from 'react';
 import styles from './Features.module.css'; // Import the CSS module
+import ReactCompareImage from 'react-compare-image';
+
 
 const Features = () => (
   <div className={styles.features}>
+    <div className={styles.imageComparisonContainer}>
+      <ReactCompareImage 
+        leftImage="/img/before-compare.png" 
+        rightImage="/img/after-compare.png" 
+        aspectRatio="taller"
+        sliderLineWidth={2}
+        sliderLineColor="#ffffff"
+        sliderPositionPercentage={0.5}
+        leftImageLabel="Walter White"
+        rightImageLabel="The Joker"
+      />
+    </div>
     <div className={styles.textContainer}>
       <div className={styles.featureGrid}>
         <div className={styles.feature}>
