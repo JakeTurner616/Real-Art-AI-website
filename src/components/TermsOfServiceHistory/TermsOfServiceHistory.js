@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styles from './TermsOfServiceHistory.module.css'; // Import CSS module
 
 const TermsOfServiceHistory = () => {
   const [commits, setCommits] = useState([]);
@@ -7,9 +8,9 @@ const TermsOfServiceHistory = () => {
   useEffect(() => {
     const fetchCommits = async () => {
       try {
-        const response = await fetch('https://api.github.com/repos/JakeTurner616/mobile-app-website/commits?path={path_to_terms_of_service_file}', {
+        const response = await fetch('https://api.github.com/repos/JakeTurner616/mobile-app-website/commits?path=src/components/TermsOfServicePage/TermsOfServicePage.js', {
           headers: {
-            'Authorization': `token ${process.env.REACT_APP_GITHUB_TOKEN}` // Use the token from the environment variable
+            'Authorization': `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`
           }
         });
         if (!response.ok) {
@@ -30,12 +31,17 @@ const TermsOfServiceHistory = () => {
   if (loading) return <p>Loading history...</p>;
 
   return (
-    <div>
-      <h2>Revision History</h2>
+    <div className={styles['history-container']}>
+      <h2 className={styles['history-header']}>Terms of Service Revision History</h2>
       <ul>
         {commits.map(commit => (
-          <li key={commit.sha}>
-            <strong>{new Date(commit.commit.author.date).toLocaleDateString()}</strong>: {commit.commit.message}
+          <li key={commit.sha} className={styles['commit-item']}>
+            <span className={styles['commit-details']}>
+              <strong>Date:</strong> {new Date(commit.commit.author.date).toLocaleDateString()}<br />
+              <strong>Author:</strong> {commit.commit.author.name}<br />
+              <span className={styles['commit-message']}><strong>Message:</strong> {commit.commit.message}</span><br />
+              <a href={commit.html_url} target="_blank" rel="noopener noreferrer" className={styles['commit-link']}>View Changes</a>
+            </span>
           </li>
         ))}
       </ul>

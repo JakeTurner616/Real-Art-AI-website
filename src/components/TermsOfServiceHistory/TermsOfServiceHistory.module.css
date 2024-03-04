@@ -1,0 +1,46 @@
+/* TermsOfServiceHistory.module.css */
+
+.history-container {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .history-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .commit-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .commit-item {
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+  }
+  
+  .commit-details {
+    margin-left: 20px;
+  }
+  
+  .commit-details strong {
+    font-weight: bold;
+  }
+  
+  .commit-message {
+    color: #666;
+    margin-top: 5px;
+  }
+  
+  .commit-link {
+    color: #0070c9;
+    text-decoration: none;
+  }
+  
+  .commit-link:hover {
+    text-decoration: underline;
+  }
