@@ -1,6 +1,5 @@
 // ImageComparison.js
 import React, { useState } from 'react';
-import styles from './ImageComparison.module.css';
 
 const ImageComparison = ({ beforeImageUrl, afterImageUrl }) => {
   const [sliderPosition, setSliderPosition] = useState(50);

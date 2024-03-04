@@ -40,8 +40,6 @@ const googlePlayReviews = [
 
 const Reviews = () => {
   const [view, setView] = useState('ios');
-
-  // Use a unique key to force re-rendering and trigger animations
   const containerKey = view === 'ios' ? 'iosContainer' : 'googlePlayContainer';
 
   const handleChange = (event) => {
@@ -81,14 +79,13 @@ const Reviews = () => {
           </div>
         </fieldset>
       </div>
-      <div key={containerKey} className={`${styles.reviewContainer} ${styles.fadeIn}`}>
-        {/* Conditional rendering based on the selected view */}
+      <div key={containerKey} className={`${styles.reviewContainer} ${styles.fadeIn}`} style={{ padding: '20px' }}>
         {view === 'ios' ? iosReviews.map((review, index) => (
           <div key={index} className={`${styles.review} ${styles.iosReview}`}>
             <h4>{review.title}</h4>
-            <div className={styles.reviewRating}>{'⭐'.repeat(parseInt(review.rating))}</div>
+            <div>{'⭐'.repeat(parseInt(review.rating))}</div>
             <p>{review.content}</p>
-            <div className={styles.reviewAuthorDate}>
+            <div>
               <small>By {review.author} on {new Date(review.date).toLocaleDateString()}</small>
             </div>
           </div>
@@ -99,11 +96,11 @@ const Reviews = () => {
             </div>
             <div className={styles.reviewBody}>
               <div className={styles.reviewAuthor}>{review.author}</div>
-              <div className={styles.reviewRatingDate}>
-                <span className={styles.reviewRating}>{'⭐'.repeat(review.rating)}</span>
-                <span className={styles.reviewDate}>{new Date(review.date).toLocaleDateString()}</span>
+              <div>
+                <span>{'⭐'.repeat(review.rating)}</span>
+                <span>{new Date(review.date).toLocaleDateString()}</span>
               </div>
-              <p className={styles.reviewContent}>{review.content}</p>
+              <p>{review.content}</p>
             </div>
           </div>
         ))}

@@ -1,6 +1,147 @@
 .banner {
-    background-color: #000; /* Example background color */
-    color: #fff; /* Example text color */
-    padding: 20px;
-    text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: hsl(0, 0%, 19%);
+  color: #ffffff;
+  padding: 20px;
+  position: relative;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3); /* Adjusted shadow for broader coverage */
+}
+
+.menu {
+  display: none;
+}
+
+.hamburgerIcon {
+  display: block;
+  cursor: pointer;
+  width: 30px;
+  height: 25px;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.hamburgerIcon span {
+  display: block;
+  height: 3px;
+  background-color: #ffffff;
+  transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .hamburgerIcon {
+    display: flex;
   }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #282c34;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 10;
+  }
+
+  .open span:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+  }
+
+  .open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .open span:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+  }
+
+  .show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .menuItem {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 700; /* Updated font-weight for bold text */
+    font-size: 1rem;
+  }
+
+  .menuItem:hover, .menuItem:focus, .activeMenuItem a {
+    background-color: #ffffff;
+    color: #000000; /* Ensure text color is black for better clarity */
+    border-radius: 5px;
+  }
+
+  .activeMenuItem a { /* Increased specificity for active menu item */
+    color: #000000 !important; /* Ensures text color is black */
+  }
+
+  /* Ensure that there's no additional size added to the active menu item */
+  .activeMenuItem {
+    background-color: #ffffff; /* Active item background color */
+    color: #000000;
+    border-radius: 5px; /* Consistency with hover styles */
+    margin: 0; /* Adjust if active item is larger */
+    padding: 15px 20px; /* Ensure padding is consistent */
+  }
+
+  .menuItem + .menuItem {
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: 769px) {
+  .menu {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .hamburgerIcon {
+    display: none;
+  }
+
+  .menuItem {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-weight: 700;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    font-size: 1rem;
+  }
+
+  .menuItem:hover, .menuItem:focus {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  .activeMenuItem a, .menuItem:hover a, .menuItem:focus a { /* Ensure text color consistency for active and hover/focus states */
+    color: #000000 !important;
+  }
+
+  .activeMenuItem {
+    background-color: #ffffff; /* Active item background color */
+    color: #000000; /* Text color for better clarity */
+    border-radius: 5px;
+  }
+}

@@ -1,40 +1,42 @@
 import React, { useState } from 'react';
-import styles from './ExpandableImageGallery.module.css'; // Ensure you have the corresponding CSS file
+import styles from './ExpandableImageGallery.module.css';
 
 const ExpandableImageGallery = ({ images }) => {
-  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [imageOpacity, setImageOpacity] = useState(1);
+
+  const navigateImage = (direction) => {
+    setImageOpacity(0); // Start by fading out the current image
+    setTimeout(() => {
+      setSelectedImageIndex((prevIndex) => {
+        const newIndex = direction === 'next'
+          ? Math.min(prevIndex + 1, images.length - 1)
+          : Math.max(prevIndex - 1, 0);
+        return newIndex;
+      });
+      setImageOpacity(1); // Then fade in the new image
+    }, 300); // This duration should match the CSS transition duration
+  };
 
   const openGallery = (index) => {
+    setImageOpacity(0); // Initiate with opacity 0
+    setTimeout(() => {
+      setImageOpacity(1); // Then fade in the new image
+    }, 10); // A short delay to ensure the opacity transition applies
     setSelectedImageIndex(index);
     setIsGalleryOpen(true);
   };
-
+  
   const closeGallery = () => {
-    setIsGalleryOpen(false);
+    setImageOpacity(0); // Start by fading out the current image
+    setTimeout(() => {
+      setIsGalleryOpen(false);
+    }, 300); // Match this duration with your CSS transition duration
   };
 
-  const goToPrevious = () => {
-    if (selectedImageIndex > 0) {
-      setSelectedImageIndex(selectedImageIndex - 1);
-    }
-  };
-
-  const goToNext = () => {
-    if (selectedImageIndex < images.length - 1) {
-      setSelectedImageIndex(selectedImageIndex + 1);
-    }
-  };
-
-  // Handles closing the gallery when the background is clicked
-  const handleModalClick = (event) => {
-    closeGallery();
-  };
-
-  // Prevents closing the gallery when the image or navigation buttons are clicked
-  const handleContentClick = (event) => {
-    event.stopPropagation();
-  };
+  const handleModalClick = () => closeGallery();
+  const handleContentClick = (event) => event.stopPropagation();
 
   return (
     <div>
@@ -50,10 +52,17 @@ const ExpandableImageGallery = ({ images }) => {
         ))}
       </div>
       {isGalleryOpen && (
-        <div className={styles.fullScreenModal} onClick={handleModalClick}>
+        <div
+          className={`${styles.fullScreenModal} ${isGalleryOpen ? styles.visible : ''}`}
+          onClick={handleModalClick}
+        >
           <div className={styles.modalContent} onClick={handleContentClick}>
-            <div className={styles.imageContainer}>
-              <button className={styles.prevButton} onClick={goToPrevious} disabled={selectedImageIndex === 0}>
+            <div className={styles.imageContainer} style={{ opacity: imageOpacity }}>
+              <button
+                className={styles.prevButton}
+                onClick={() => navigateImage('prev')}
+                disabled={selectedImageIndex === 0}
+              >
                 &lt;
               </button>
               <img
@@ -61,7 +70,11 @@ const ExpandableImageGallery = ({ images }) => {
                 alt={images[selectedImageIndex].alt}
                 className={styles.fullScreenImage}
               />
-              <button className={styles.nextButton} onClick={goToNext} disabled={selectedImageIndex === images.length - 1}>
+              <button
+                className={styles.nextButton}
+                onClick={() => navigateImage('next')}
+                disabled={selectedImageIndex === images.length - 1}
+              >
                 &gt;
               </button>
             </div>

@@ -1,34 +1,29 @@
 .galleryThumbnails {
   display: flex;
-  overflow-x: auto; /* Allows horizontal scrolling */
-  overflow-y: hidden; /* Prevents vertical scrolling */
-  padding: 20px 0; /* Adjust padding for spacing */
-  gap: 10px; /* Adds space between thumbnails */
-  scroll-snap-type: x mandatory; /* Enables snapping behavior */
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on webkit browsers */
-  justify-content: center; /* Center the thumbnails horizontally */
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 20px 0;
+  gap: 10px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  justify-content: center;
 }
 
 .thumbnail {
-  flex: 0 0 auto; /* Thumbnails do not grow or shrink but are based on content width */
-  width: 80vw; /* Responsive width, adjust based on preference */
-  max-width: 300px; /* Maximum thumbnail width */
-  height: auto; /* Adjust height automatically to maintain aspect ratio */
+  flex: 0 0 auto;
+  width: 80vw;
+  max-width: 300px;
+  height: auto;
   cursor: pointer;
-  object-fit: cover; /* Ensures thumbnails maintain aspect ratio */
-  border-radius: 4px; /* Rounded corners for aesthetics */
-  scroll-snap-align: center; /* Ensures the thumbnail snaps cleanly into place */
+  object-fit: cover;
+  border-radius: 4px;
+  scroll-snap-align: center;
+  transition: transform 0.3s ease;
 }
-@media (hover: none) and (pointer: coarse) {
-  /* Styles for devices without hover capability (usually touchscreens) */
-  .thumbnail {
-    pointer-events: none; /* Disables clicking */
-    transform: none;
-  }
-}
+
 .thumbnail:hover {
-  transform: scale(1.1); /* Scales up thumbnail on hover */
-  z-index: 10; /* Ensures the scaled thumbnail overlaps neighbors slightly */
+  transform: scale(1.1);
+  z-index: 10;
 }
 
 .fullScreenModal {
@@ -41,65 +36,97 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.9);
-  padding: 40px; /* Increased padding to provide more space */
+  padding: 40px;
   box-sizing: border-box;
-  overflow: auto; /* Allows scrolling if the image is still too large */
+  overflow: auto;
   z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s; /* Hide visibility transition when fading out */
+  
+}
+
+.fullScreenModal.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease; /* Immediate visibility transition when fading in */
 }
 
 .modalContent {
   display: flex;
-  flex-direction: row; /* Change to row to align items horizontally */
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between; /* This will place the prev and next buttons on the sides */
-  max-width: calc(100vw - 80px); /* Adjust based on padding */
+  justify-content: space-between;
+  max-width: calc(100vw - 80px);
   max-height: calc(100vh - 80px);
-  position: relative; /* Ensures absolute positioning for children */
+  position: relative;
 }
 
 .imageContainer {
-  position: relative; /* Establishes a new positioning context */
-  display: inline-flex; /* Aligns children in a row and allows the container to fit the image size */
-  align-items: center; /* Centers items vertically */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.3s ease; /* Smooth transition for the opacity change */
 }
 
 .fullScreenImage {
-  display: block; /* Ensures the image does not have extra space around it */
-  max-width: calc(100vw - 80px); /* Adjusts image size within the viewport */
-  max-height: calc(100vh - 80px); /* Adjusts image size within the viewport */
-  width: auto; /* Maintains aspect ratio */
-  height: auto; /* Maintains aspect ratio */
-  object-fit: contain; /* Ensures the image fits within its bounds */
-}
-
-.closeButton {
-  position: fixed; /* Fixed position within the modal */
-  top: 20px;
-  right: 30px;
-  font-size: 30px;
-  color: white;
-  cursor: pointer;
+  display: block;
+  max-width: calc(100vw - 80px);
+  max-height: calc(100vh - 80px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  /* Ensure there's no transition set here that could conflict with the inline styles */
 }
 
 .prevButton, .nextButton {
-  position: absolute; /* Positions the buttons absolutely within `.imageContainer` */
-  top: 50%; /* Aligns buttons vertically to the center of the container */
-  transform: translateY(-50%); /* Centers buttons vertically */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 30px;
-  color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0); /* IF the button can be pressed it should be black */
   background: none;
   border: none;
   cursor: pointer;
 }
 
 .prevButton {
-  left: 0; /* Positions the previous button to the left edge of the image container */
+  left: 0;
 }
 
 .nextButton {
-  right: 0; /* Positions the next button to the right edge of the image container */
+  right: 0;
 }
 
 .prevButton:disabled, .nextButton:disabled {
-  color: grey; /* Indicate the button is disabled */
+  color: grey;
+}
+
+@media screen and (max-width: 768px) {
+  .galleryThumbnails {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+  }
+  
+  .thumbnail {
+    width: 90vw;
+    max-width: 250px;
+    margin-bottom: 10px;
+  }
+
+  .fullScreenModal {
+    padding: 20px;
+    
+  }
+
+  .modalContent {
+    flex-direction: column;
+    max-width: calc(100vw - 40px);
+    max-height: calc(100vh - 40px);
+  }
+
+  .prevButton, .nextButton {
+    font-size: 24px;
+  }
 }

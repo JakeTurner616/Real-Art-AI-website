@@ -1,0 +1,23 @@
+/* src/components/Footer/Footer.module.css */
+.footer {
+    background-color: #282c34; /* Adjust the color to match your theme */
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+  }
+  
+  .content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+  }
+  
+  .termsLink, .rssFeed a {
+    color: #61dafb; /* Adjust the color to match your theme */
+    text-decoration: none;
+  }
+  
+  .termsLink:hover, .rssFeed a:hover {
+    text-decoration: underline;
+  }

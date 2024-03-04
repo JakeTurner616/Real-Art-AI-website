@@ -28,26 +28,23 @@
 }
 
 .imageComparisonContainer {
-  max-width: 550px; /* Max width for horizontal layout */
-  margin-right: 20px; /* Add margin to the right to create space */
-  flex: 1; /* Allow image comparison to take remaining space */
-  min-width: 550px; /* Set minimum width for the image comparison container */
-  padding: 50px;
+  max-width: 550px; /* Max width for larger screens */
+  width: 100%; /* Ensure it takes up the full width of its parent container */
+  margin-right: 60px; /* Maintain right margin for spacing */
+  flex: 1; /* Allow the container to grow and shrink */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
+  min-width: 300px; /* Set a minimum width */
 }
 
 @media screen and (max-width: 768px) {
-  .features {
-    flex-direction: column; /* Stack elements vertically on mobile */
-    align-items: center; /* Center items vertically on mobile */
-  }
-
-  .textContainer {
-    margin: 0; /* Remove margin */
-  }
-
   .imageComparisonContainer {
-    max-width: 100%; /* Allow image comparison to take full width on mobile */
-    margin-right: 0; /* Remove right margin on mobile */
-    margin-top: 20px; /* Add margin top on mobile */
+    max-width: 100%; /* Allow full width on smaller screens */
+    margin-right: 0; /* Remove right margin on smaller screens */
+    margin-top: 20px; /* Adjust top margin for spacing */
+    margin-bottom: 20px; /* Adjust top margin for spacing */
+    min-width: 250px; /* Adjust min-width for very small devices */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 
+    0 6px 12px rgba(0, 0, 0, 0.3);
   }
 }
