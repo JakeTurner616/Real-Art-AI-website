@@ -1,10 +1,12 @@
 /* src/components/Footer/Footer.module.css */
 .footer {
-    background-color: #282c34; /* Adjust the color to match your theme */
+    background-color: hsl(0, 0%, 19%);
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
     color: #ffffff;
     text-align: center;
     padding: 20px;
     font-size: 14px;
+    bottom: 0;
   }
   
   .content {
@@ -17,7 +19,17 @@
     color: #61dafb; /* Adjust the color to match your theme */
     text-decoration: none;
   }
+  .madeWith {
+    display: flex;
+    align-items: center; /* Align items vertically */
+  }
   
+  .coloradoFlag {
+    width: 11px;
+    height: auto;
+    transform: scale(2);
+    margin-left: 10px;
+  }
   .termsLink:hover, .rssFeed a:hover {
     text-decoration: underline;
   }

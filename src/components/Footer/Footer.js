@@ -8,11 +8,12 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.content}>
-        <p>&copy; {currentYear} Serverboi.org | Developed by Jakob Turner | Real Art AI</p>
-        <Link to="/terms-of-service" className={styles.termsLink}>Terms of Service</Link>
-        <div className={styles.rssFeed}>
-          <a href="/rss-feed" aria-label="Subscribe to our RSS feed">Subscribe to RSS Feed</a>
+        <div className={styles.madeWith}>
         </div>
+        
+        
+
+        <p> <Link to="https://serverboi.org" className={styles.termsLink}>&copy; {currentYear} serverboi.org</Link> | <Link to="https://github.com/JakeTurner616/Real-Art-AI" className={styles.termsLink}>Source Code</Link> | <Link to="/contact" className={styles.termsLink}>Contact</Link> | <Link to="/terms-of-service" className={styles.termsLink}>Terms of Service</Link> </p>
       </div>
     </footer>
   );
