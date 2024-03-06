@@ -5,6 +5,7 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    
   }
   
   .page-title {
@@ -14,10 +15,17 @@
     margin-bottom: 20px;
   }
   
+  .scrollable-content {
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: calc(100vh - 200px); /* Adjust height as needed; subtract footer height */
+    padding-right: 20px; /* Add space for scrollbar to prevent content from shifting */
+}
   .page-content {
+    
     font-size: 16px;
     color: #666;
     line-height: 1.6;
+    
   }
   
   .link {
@@ -28,3 +36,31 @@
   .link:hover {
     text-decoration: underline;
   }
+
+  .print-button {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 4px;
+    border: 2px solid black;
+    padding: 8px;
+    cursor: pointer;
+    margin: 20px;
+}
+
+.print-button svg {
+    transform: scale(1.2);
+}
+
+.url {
+    font-size: 14px;
+}
+.privacy-policy-container {
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 10px; /* Add rounded corners */
+  padding: 20px; /* Add padding */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a shadow effect */
+  margin: 20px; /* Optional: Add some space between sections */
+}
