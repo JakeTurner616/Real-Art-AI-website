@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './Banner.module.css';
 
 const Banner = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const iconRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -21,14 +22,25 @@ const Banner = () => {
     };
   }, []);
 
+  const handleHeadingClick = () => {
+    navigate('/');
+  };
+
   return (
     <div className={styles.banner}>
-      <h1>Real Art AI</h1>
+      {/* The heading is now only clickable, not focusable via keyboard navigation */}
+      <h1 onClick={handleHeadingClick} style={{cursor: 'pointer'}}>
+        Real Art AI
+      </h1>
       <div
         ref={iconRef}
         className={`${styles.hamburgerIcon} ${isMenuOpen ? styles.open : ''}`}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
+        onKeyDown={(e) => e.key === 'Enter' && setIsMenuOpen(!isMenuOpen)}
+        tabIndex="0"
         aria-label="Toggle menu"
+        aria-expanded={isMenuOpen}
+        role="button"
       >
         <span></span>
         <span></span>
@@ -39,9 +51,8 @@ const Banner = () => {
         ref={menuRef}
       >
         <NavLink to="/" className={({ isActive }) => isActive ? `${styles.menuItem} ${styles.activeMenuItem}` : styles.menuItem}>Home</NavLink>
-        <NavLink to="/about" className={({ isActive }) => isActive ? `${styles.menuItem} ${styles.activeMenuItem}` : styles.menuItem}>About</NavLink>
         <NavLink to="/contact" className={({ isActive }) => isActive ? `${styles.menuItem} ${styles.activeMenuItem}` : styles.menuItem}>Contact</NavLink>
-        <NavLink to="/terms-of-service" className={({ isActive }) => isActive ? `${styles.menuItem} ${styles.activeMenuItem}` : styles.menuItem}>Terms of Service</NavLink>
+        <NavLink to="/privacy" className={({ isActive }) => isActive ? `${styles.menuItem} ${styles.activeMenuItem}` : styles.menuItem}>Privacy Policy</NavLink>
       </div>
     </div>
   );

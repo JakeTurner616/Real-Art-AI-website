@@ -2,10 +2,16 @@ import React from 'react';
 import TermsOfServiceHistory from '../TermsOfServiceHistory/TermsOfServiceHistory';
 import styles from './TermsOfServicePage.module.css'; // Import CSS module
 import Footer from '../Footer/Footer';
+import { Helmet, HelmetProvider } from 'react-helmet-async'; // Import Helmet and HelmetProvider from react-helmet-async
 
 const TermsOfServicePage = () => {
     return (
+        <HelmetProvider> {/* Wrap everything with HelmetProvider */}
         <div>
+            <Helmet>
+      <title>Privacy Policy</title>
+      <meta name="description" content="Privacy policy and terms of service infomration for the Real Art AI mobile application" />
+    </Helmet> 
 <div className={styles['page-container']}>
     <h1 className={styles['page-title']}>Terms of Service</h1>
     <div className={styles['scrollable-content']}>
@@ -52,7 +58,7 @@ const TermsOfServicePage = () => {
 
             <Footer /> {/* Include Footer component outside of the page-container div */}
         </div>
-
+        </HelmetProvider>
 
     );
 };

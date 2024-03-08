@@ -155,20 +155,16 @@
   justify-content: center;
   cursor: pointer;
   padding: 0.5em 1em; /* Adjust padding as needed */
-  background-color: #f0f0f0; /* Light grey background */
   transition: background-color 0.3s ease; /* Smooth background color transition */
+  
 }
 
 /* Style for when the radio is checked */
 input:checked + .label {
-  background-color: #007bff; /* Change color when selected */
   color: white; /* Change text color when selected */
 }
 
-/* Optional: Add styles for hover effect */
-.label:hover {
-  background-color: #0056b3; /* Darker shade for hover effect */
-}
+
 .reviewContent {
   font-size: 0.875rem;
   color: #495057; /* Content text color */
@@ -185,7 +181,6 @@ input:checked + .label {
 
 .highlight {
   position: absolute;
-  background-color: #007bff; /* Active color: blue */
   transition: left 0.3s ease-out; /* Smooth transition for moving highlight */
   height: calc(100% - 10px); /* Slightly smaller height for the rounded effect */
   width: calc(50% - 5px); /* Adjust width to match the button size, accounting for gaps */
@@ -200,7 +195,7 @@ input:checked + .label {
 }
 
 input:checked + .label {
-  background-color: #007bff; /* Active color: blue */
+  border: solid 2px black;
   color: white;
   font-weight: bold; /* Optional: makes the text bold when selected */
 }

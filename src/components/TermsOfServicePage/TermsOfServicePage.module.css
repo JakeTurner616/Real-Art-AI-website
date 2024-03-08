@@ -6,6 +6,7 @@
     margin: 0 auto;
     padding: 20px;
     
+    
   }
   
   .page-title {
@@ -16,8 +17,8 @@
   }
   
   .scrollable-content {
-    overflow-y: auto; /* Enable vertical scrolling */
-    max-height: calc(100vh - 200px); /* Adjust height as needed; subtract footer height */
+
+    max-height: calc(100vh - 100px); /* Adjust height as needed; subtract footer height */
     padding-right: 20px; /* Add space for scrollbar to prevent content from shifting */
 }
   .page-content {
@@ -63,4 +64,12 @@
   padding: 20px; /* Add padding */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a shadow effect */
   margin: 20px; /* Optional: Add some space between sections */
+}
+@media screen and (max-width: 1200px) {
+  .history-container, .privacy-policy-container {
+    padding: 10px;
+  }
+  .scrollable-content {
+    max-height: 100%; /* Remove fixed height and allow content to flow */
+  }
 }

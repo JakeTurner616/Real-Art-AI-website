@@ -33,18 +33,20 @@ const TermsOfServiceHistory = () => {
   return (
     <div className={styles['history-container']}>
       <h2 className={styles['history-header']}>Terms of Service Revision History</h2>
-      <ul>
-        {commits.map(commit => (
-          <li key={commit.sha} className={styles['commit-item']}>
-            <span className={styles['commit-details']}>
-              <strong>Date:</strong> {new Date(commit.commit.author.date).toLocaleDateString()}<br />
-              <strong>Author:</strong> {commit.commit.author.name}<br />
-              <span className={styles['commit-message']}><strong>Message:</strong> {commit.commit.message}</span><br />
-              <a href={commit.html_url} target="_blank" rel="noopener noreferrer" className={styles['commit-link']}>View Changes</a>
-            </span>
-          </li>
-        ))}
-      </ul>
+      <div className={styles['scrollable-content']}> {/* New scrollable container for the list */}
+        <ul>
+          {commits.map(commit => (
+            <li key={commit.sha} className={styles['commit-item']}>
+              <span className={styles['commit-details']}>
+                <strong>Date:</strong> {new Date(commit.commit.author.date).toLocaleDateString()}<br />
+                <strong>Author:</strong> {commit.commit.author.name}<br />
+                <span className={styles['commit-message']}><strong>Message:</strong> {commit.commit.message}</span><br />
+                <a href={commit.html_url} target="_blank" rel="noopener noreferrer" className={styles['commit-link']}>View Changes</a>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

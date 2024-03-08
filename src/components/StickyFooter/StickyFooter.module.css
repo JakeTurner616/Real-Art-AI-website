@@ -1,0 +1,42 @@
+.sticky-footer {
+  position: fixed;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  min-width: 100%;
+  background-color: hsl(0, 0%, 19%);
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.termsLink, .rssFeed a {
+  color: #61dafb;
+  text-decoration: none;
+}
+
+.madeWith {
+  display: flex;
+  align-items: center;
+}
+
+
+.termsLink:hover, .rssFeed a:hover {
+  text-decoration: underline;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}

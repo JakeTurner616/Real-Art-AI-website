@@ -1,35 +1,37 @@
-/* src/components/Footer/Footer.module.css */
 .footer {
-    background-color: hsl(0, 0%, 19%);
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
-    color: #ffffff;
-    text-align: center;
-    padding: 20px;
-    font-size: 14px;
-    bottom: 0;
-  }
-  
-  .content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 10px;
-  }
-  
-  .termsLink, .rssFeed a {
-    color: #61dafb; /* Adjust the color to match your theme */
-    text-decoration: none;
-  }
-  .madeWith {
-    display: flex;
-    align-items: center; /* Align items vertically */
-  }
-  
-  .coloradoFlag {
-    width: 11px;
-    height: auto;
-    transform: scale(2);
-    margin-left: 10px;
-  }
-  .termsLink:hover, .rssFeed a:hover {
-    text-decoration: underline;
-  }
+  position: relative;
+  bottom: 0;
+  left: 0;
+  background-color: hsl(0, 0%, 19%);
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.termsLink, .rssFeed a {
+  color: #ffffff; /* A bright, but not too harsh, color for visibility */
+  text-decoration: none;
+  transition: color 0.3s ease, opacity 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.madeWith {
+  display: flex;
+  align-items: center;
+}
+
+.termsLink:hover, .rssFeed a:hover {
+  text-decoration: underline;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}

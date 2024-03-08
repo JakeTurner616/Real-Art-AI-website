@@ -1,0 +1,133 @@
+
+  .contactPageWrapper {
+    display: flex;
+    flex-direction: column;
+
+  }
+  .contactPage {
+    
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    min-height: 600px;
+    
+  }
+.profileCard {
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.76);
+    border-radius: 20px; /* Ensure this is sufficient to see the rounded effect */
+    flex-basis: 40%;
+    max-width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    
+    padding: 20px;
+    min-width: 300px;
+    margin-top: 50px; /* Adjust if necessary to ensure no overlap */
+    margin-bottom: 50px; /* Adjust if necessary to ensure no overlap */
+    
+  }
+  .statusTableContainer {
+    /* Controls the table's wrapping container */
+    flex-basis: 55%; /* Example to control width, adjust based on your layout */
+    max-width: 55%; /* Ensures the table container does not grow too large */
+    padding-left: 20px; /* Adds some space between the card and the table */
+  }
+.profileCard img {
+    border-radius: 50%;
+    width: 125px;
+    margin-top: 20px;
+  }
+  
+  .profileInfo {
+
+    margin-top: 20px;
+  }
+  
+  .contactContainer {
+    margin: 25px;
+    
+  }
+  
+  .infoRow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+  
+  .infoRow svg {
+    margin-right: 10px;
+  }
+  
+  .infoText {
+    text-align: left;
+  }
+
+
+.headingContainer {
+
+  color: #333;
+    text-align: center; /* Center align the text */
+
+
+}
+
+.heading {
+    font-size: 2.5rem; /* Adjust size as needed */
+    margin: 0 0 10px 0; /* Adjust spacing as needed */
+}
+
+.subheading {
+    padding: 35px;
+    font-size: 1.3rem; /* Adjust size as needed */
+    margin: 45px; /* Adjust spacing as needed */
+    margin-bottom: 65px; /* Adjust spacing as needed */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #f2f2f2; /* Light background color */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    width: 50vw;
+  }
+.statusTable {
+    width: 100%; /* Full width */
+    border-collapse: collapse; /* Collapse borders */
+    margin-top: 20px; /* Add some space above the table */
+    
+  }
+  
+  .statusTable th, .statusTable td {
+    border: 1px solid #ddd; /* Light grey border */
+    padding: 8px; /* Padding for cells */
+    text-align: left;
+  }
+  
+  .statusTable th {
+    background-color: #f2f2f2; /* Light grey background for header cells */
+    text-align: center; /* Align text to the left */
+  }
+  .tableContainer {
+  padding: 20px; /* Adjust the padding as needed */
+}
+.contentFlexContainer {
+    display: flex;
+    justify-content: center; /* Align items to the center horizontally */
+    align-items: center; /* Align items to the center vertically */
+    gap: 20px; /* Add a small gap between the contact card and the table */
+
+  }
+  /* Media query for stacking at a certain width */
+/* Media query for stacking at a certain width */
+@media (max-width: 768px) {
+    .contentFlexContainer {
+      flex-direction: column; /* Stack items vertically */
+      align-items: center; /* Center items horizontally */
+    }
+  
+
+  }
+

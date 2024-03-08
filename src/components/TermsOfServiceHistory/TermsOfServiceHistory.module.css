@@ -1,47 +1,54 @@
-/* TermsOfServiceHistory.module.css */
-
 .history-container {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    max-width: 600px;
-    margin: 0 auto;
+  margin: 0 auto;
+}
+
+.scrollable-content {
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.history-header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.commit-item {
+  list-style-type: none;
+  border-bottom: 1px solid #ddd;
+  padding: 20px 0;
+}
+
+.commit-details {
+  margin-left: 20px;
+}
+
+.commit-details strong {
+  font-weight: bold;
+}
+
+.commit-message {
+  color: #666;
+  margin-top: 5px;
+}
+
+.commit-link {
+  color: #0070c9;
+  text-decoration: none;
+}
+
+.commit-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+  .history-container {
+    /* Adjust the max-height for smaller screens if needed */
+    max-height: 210px;
   }
-  
-  .history-header {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
+  .scrollable-content {
+    /* You might want to adjust the max-height here as well for consistency */
+    max-height: 125px;/* Example adjustment for smaller screens */
   }
-  
-  .commit-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .commit-item {
-    border-bottom: 1px solid #ddd;
-    padding: 20px 0;
-  }
-  
-  .commit-details {
-    margin-left: 20px;
-  }
-  
-  .commit-details strong {
-    font-weight: bold;
-  }
-  
-  .commit-message {
-    color: #666;
-    margin-top: 5px;
-  }
-  
-  .commit-link {
-    color: #0070c9;
-    text-decoration: none;
-  }
-  
-  .commit-link:hover {
-    text-decoration: underline;
-  }
-  
+}

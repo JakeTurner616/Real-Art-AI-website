@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Reviews.module.css';
-
+import Footer from '../Footer/Footer';
 // Hardcoded iOS reviews data
 const iosReviews = [
   {
@@ -27,14 +27,14 @@ const googlePlayReviews = [
     rating: 5,
     content: 'Made a perfect image of Putin in a hijab.',
     date: 'Jun 27, 2023',
-    avatarUrl: 'https://lh3.googleusercontent.com/a/ACg8ocInqyBYEdA3xQeSx97KpLhW4tCJoooVbj5DnzB3ecNh=mo'
+    avatarUrl: '/img/cht.svg'
   },
   {
     author: 'Me Danish',
     rating: 5,
     content: "The app's user-friendly interface and real-time preview make the editing process a breeze. Whether you're an amateur photographer or just looking to add a creative touch to your social media posts, Real Art AI is a must-have. It's like having your own personal art studio in the palm of your hand!",
     date: 'Nov 25, 2023',
-    avatarUrl: 'https://lh3.googleusercontent.com/a/ACg8ocKyTkdySn395kkwtDh3emnPg7nMUarZB4RXGkt-jI9aMg=mo'
+    avatarUrl: '/img/med.svg'
   }
 ];
 
@@ -105,7 +105,9 @@ const Reviews = () => {
           </div>
         ))}
       </div>
+      <Footer />
     </div>
+    
   );
 };
 
