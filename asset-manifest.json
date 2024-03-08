@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/JakeTurner616/mobile-app-website/static/css/main.6fc997d4.css",
-    "main.js": "/JakeTurner616/mobile-app-website/static/js/main.927d5058.js",
-    "static/js/453.0f3bcf99.chunk.js": "/JakeTurner616/mobile-app-website/static/js/453.0f3bcf99.chunk.js",
-    "index.html": "/JakeTurner616/mobile-app-website/index.html",
-    "main.6fc997d4.css.map": "/JakeTurner616/mobile-app-website/static/css/main.6fc997d4.css.map",
-    "main.927d5058.js.map": "/JakeTurner616/mobile-app-website/static/js/main.927d5058.js.map",
-    "453.0f3bcf99.chunk.js.map": "/JakeTurner616/mobile-app-website/static/js/453.0f3bcf99.chunk.js.map"
+    "main.css": "/mobile-app-website/static/css/main.6fc997d4.css",
+    "main.js": "/mobile-app-website/static/js/main.dd548952.js",
+    "static/js/453.0f3bcf99.chunk.js": "/mobile-app-website/static/js/453.0f3bcf99.chunk.js",
+    "index.html": "/mobile-app-website/index.html",
+    "main.6fc997d4.css.map": "/mobile-app-website/static/css/main.6fc997d4.css.map",
+    "main.dd548952.js.map": "/mobile-app-website/static/js/main.dd548952.js.map",
+    "453.0f3bcf99.chunk.js.map": "/mobile-app-website/static/js/453.0f3bcf99.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6fc997d4.css",
-    "static/js/main.927d5058.js"
+    "static/js/main.dd548952.js"
   ]
 }
