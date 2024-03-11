@@ -9,9 +9,7 @@ const TermsOfServiceHistory = () => {
     const fetchCommits = async () => {
       try {
         const response = await fetch('https://api.github.com/repos/JakeTurner616/mobile-app-website/commits?path=src/components/TermsOfServicePage/TermsOfServicePage.js', {
-          headers: {
-            'Authorization': `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`
-          }
+
         });
         if (!response.ok) {
           throw new Error('GitHub API response not ok');

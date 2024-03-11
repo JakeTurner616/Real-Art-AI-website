@@ -1,11 +1,13 @@
 {
-  "name": "mobile-app-website",
+  "name": "real-art-ai-mobile-app-website",
   "version": "0.1.0",
+  "homepage": "https://appdev.serverboi.org",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "create-react-app": "^5.0.1",
     "react": "^18.2.0",
     "react-burger-menu": "^3.0.9",
     "react-compare-image": "^3.4.0",
@@ -17,6 +19,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -39,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   }
 }

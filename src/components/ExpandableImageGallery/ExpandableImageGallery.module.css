@@ -1,31 +1,29 @@
 .galleryThumbnails {
   display: flex;
+  flex-wrap: nowrap;
   overflow-x: auto;
-  overflow-y: hidden;
-  padding: 20px 0;
-  gap: 10px;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  justify-content: center;
+  gap: 10px;
+  padding: 20px 0; /* Adjust padding as needed */
+  justify-content: flex-start; /* Default to left alignment */
 }
 
 .thumbnail {
-  flex: 0 0 auto;
-  width: 80vw;
-  max-width: 300px;
-  height: auto;
+  flex: 0 0 auto; /* Do not grow or shrink */
+  width: 80vw; /* Adjust width as needed */
+  max-width: 300px; /* Maximum width for thumbnails */
+  height: auto; /* Height to maintain aspect ratio */
   cursor: pointer;
   object-fit: cover;
   border-radius: 4px;
-  scroll-snap-align: center;
-  transition: transform 0.3s ease;
+  scroll-snap-align: start;
+  transition: transform 0.5s ease-out, box-shadow 0.5s ease-out; /* Extend duration and use 'ease-out' for a smooth end */
 }
 
-.thumbnail:hover {
-  transform: scale(1.1);
-  z-index: 10;
+.thumbnail:hover, .thumbnail:focus {
+  transform: scale(1.05); /* Slightly reduce the growth to make it more subtle */
 }
-
 .fullScreenModal {
   position: fixed;
   top: 0;
@@ -57,8 +55,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  max-width: calc(100vw - 80px);
-  max-height: calc(100vh - 80px);
+
   position: relative;
 }
 

@@ -7,7 +7,7 @@ const ExpandableImageGallery = ({ images }) => {
   const [imageOpacity, setImageOpacity] = useState(1);
   const firstButtonRef = useRef(null);
   const lastFocusedElement = useRef(null);
-  
+  const galleryRef = useRef(null); // Add this line
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -21,6 +21,29 @@ const ExpandableImageGallery = ({ images }) => {
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [isGalleryOpen]);
+
+  // New useEffect hook for dynamic alignment
+  useEffect(() => {
+    const adjustGalleryAlignment = () => {
+      if (galleryRef.current) {
+        const gallery = galleryRef.current;
+        const totalWidthOfThumbnails = Array.from(gallery.children).reduce(
+          (total, child) => total + child.offsetWidth + 10, // 10px for gap, adjust if your gap is different
+          0
+        );
+        
+        gallery.style.justifyContent =
+          totalWidthOfThumbnails <= gallery.offsetWidth ? 'center' : 'flex-start';
+      }
+    };
+
+    adjustGalleryAlignment();
+    
+    window.addEventListener('resize', adjustGalleryAlignment);
+    return () => {
+      window.removeEventListener('resize', adjustGalleryAlignment);
+    };
+  }, [images]); // Dependency on images ensures this runs again if the images prop changes
 
   const navigateImage = (direction) => {
     setImageOpacity(0);
@@ -36,11 +59,11 @@ const ExpandableImageGallery = ({ images }) => {
   };
 
   const openGallery = (index) => {
-    lastFocusedElement.current = document.activeElement; // Save the last focused element before opening the gallery
+    lastFocusedElement.current = document.activeElement;
     setImageOpacity(0);
     setTimeout(() => {
       setImageOpacity(1);
-      firstButtonRef.current?.focus(); // Move focus to the first interactive element
+      firstButtonRef.current?.focus();
     }, 10);
     setSelectedImageIndex(index);
     setIsGalleryOpen(true);
@@ -50,7 +73,7 @@ const ExpandableImageGallery = ({ images }) => {
     setImageOpacity(0);
     setTimeout(() => {
       setIsGalleryOpen(false);
-      lastFocusedElement.current?.focus(); // Return focus to the last focused element
+      lastFocusedElement.current?.focus();
     }, 300);
   };
 
@@ -59,7 +82,7 @@ const ExpandableImageGallery = ({ images }) => {
 
   return (
     <div>
-      <div className={styles.galleryThumbnails}>
+      <div ref={galleryRef} className={styles.galleryThumbnails}> {/* Add ref here */}
         {images.map((image, index) => (
           <img
             key={index}
@@ -67,8 +90,8 @@ const ExpandableImageGallery = ({ images }) => {
             alt={image.alt}
             onClick={() => openGallery(index)}
             className={styles.thumbnail}
-            tabIndex="0" // Make thumbnails focusable
-            onKeyPress={(event) => event.key === 'Enter' && openGallery(index)} // Allow opening with keyboard
+            tabIndex="0"
+            onKeyPress={(event) => event.key === 'Enter' && openGallery(index)}
           />
         ))}
       </div>
@@ -77,8 +100,8 @@ const ExpandableImageGallery = ({ images }) => {
           className={`${styles.fullScreenModal} ${isGalleryOpen ? styles.visible : ''}`}
           onClick={handleModalClick}
           onKeyDown={(event) => event.key === 'Escape' && closeGallery()}
-          tabIndex="-1" // Make modal focusable for handling escape key
-          aria-modal="true" // Communicate that this is a modal dialog
+          tabIndex="-1"
+          aria-modal="true"
           role="dialog"
         >
           <div className={styles.modalContent} onClick={handleContentClick}>

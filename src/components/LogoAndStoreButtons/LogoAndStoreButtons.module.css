@@ -70,7 +70,20 @@
         flex-direction: column; /* Stack elements vertically on smaller screens */
         gap: 10px; /* Adjust the gap for vertical stacking */
     }
-
+    .logo-container {
+        width: 200px; /* Or your preferred size */
+        height: 200px; /* Or your preferred size, should match width for square aspect ratio */
+        background-color: rgba(255, 255, 255, 0.76); 
+        border-radius: 30%; /* Provides the distinctive iOS icon curvature */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-width: 0;
+        box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+        overflow: hidden; /* Ensures nothing spills outside the rounded corners */
+        padding: 20px;
+        min-width: 200px; /* Ensures the logo container does not shrink beyond this width */
+    }
 
     .store-badge {
         width: 200px; /* Adjust the badge size for smaller screens */
