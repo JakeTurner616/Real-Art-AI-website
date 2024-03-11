@@ -1,5 +1,5 @@
 {
-  "name": "real-art-ai-mobile-app-website",
+  "name": "real-art-ai-website",
   "version": "0.1.0",
   "homepage": "https://appdev.serverboi.org",
   "private": true,
@@ -46,5 +46,10 @@
   },
   "devDependencies": {
     "gh-pages": "^6.1.1"
+  },
+  
+  "overrides": {
+    "postcss": "^8.4.31"
   }
+  
 }
