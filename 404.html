@@ -32,15 +32,16 @@
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
   <script>
-    // Check if the path was a direct navigation to a specific route
-    if (sessionStorage.redirect) {
-      delete sessionStorage.redirect;
-    } else if (window.location.pathname !== '/') {
-      // Avoid redirect loop for root path
-      sessionStorage.redirect = window.location.href;
-      window.location.replace('/');
-    }
+    (function() {
+      // Only perform this logic on the 404 page, not your main index.html
+      if (!sessionStorage.redirect) {
+        sessionStorage.redirect = location.pathname + location.search;
+        window.location = '/' + location.search + location.hash;
+      }
+    })();
   </script>
+  
+  
 </head>
 
 <body>
