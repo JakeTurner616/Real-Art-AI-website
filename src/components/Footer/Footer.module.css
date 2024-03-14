@@ -1,5 +1,25 @@
+html, body {
+  height: 100%;
+  margin: 0; /* Remove default margin */
+  width: 100vw;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.content {
+  flex: 1; /* This ensures the content takes up the available space */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
 .footer {
-  position: relative;
+  position: relative; /* Change this to 'fixed' in the media query for tall screens */
+  width: 100vw;
   bottom: 0;
   left: 0;
   background-color: hsl(0, 0%, 19%);
@@ -10,16 +30,10 @@
   font-size: 14px;
 }
 
-.content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px;
-}
-
 .termsLink, .rssFeed a {
-  color: #ffffff; /* A bright, but not too harsh, color for visibility */
+  color: #ffffff;
   text-decoration: none;
-  transition: color 0.3s ease, opacity 0.3s ease; /* Smooth transition for hover effects */
+  transition: color 0.3s ease, opacity 0.3s ease;
 }
 
 .madeWith {
@@ -31,7 +45,3 @@
   text-decoration: underline;
 }
 
-body {
-  position: relative;
-  overflow-x: hidden; /* Prevent horizontal overflow */
-}
