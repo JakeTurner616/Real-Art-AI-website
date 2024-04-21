@@ -54,6 +54,7 @@ function App() {
             } />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy" element={<TermsOfServicePage />} />
+            <Route path="/privacy.html" element={<TermsOfServicePage />} />
             <Route path="*" element={<NotFoundPage />} /> {/* This is a catch-all route */}
           </Routes>
         </div>
