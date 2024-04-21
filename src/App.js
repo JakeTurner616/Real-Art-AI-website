@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+
+
 import Banner from './components/Banner/Banner';
 import Description from './components/Description/Description';
 import Features from './components/Features/Features';
@@ -9,6 +11,7 @@ import LogoAndStoreButtons from './components/LogoAndStoreButtons/LogoAndStoreBu
 import ContactPage from './components/ContactPage/ContactPage';
 import TermsOfServicePage from './components/TermsOfServicePage/TermsOfServicePage';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
+
 import './App.css';
 
 function RedirectHandler() {
@@ -34,29 +37,28 @@ function App() {
       { src: './img/appimg6.png', alt: "A mobile application interface featuring the headline 'Type anything and let the AI do the hard work'. The app showcases an AI-generated image reflecting the input text 'colorful, nature, picturesque' typed into a text prompt field. The image depicts a serene pathway lined with vibrant autumnal trees in full color, leading into a forest. A female figure with long hair, wearing a dark school uniform, is seen from behind, gazing down the path, adding a human element to the landscape. The 'Painting style?' option is highlighted, while 'Model style?' and 'Anime style?' are available options. Below the image, a button labeled 'Save to gallery' invites users to store their AI-crafted images, demonstrating the app's ability to create detailed art from simple text descriptions." },
       { src: './img/appimg7.png', alt: "A mobile app interface headlined 'Advanced settings for complete control,' indicating customization features within the app. The interface presents a modal overlay titled 'Advanced Txt2img Settings' with various configurable parameters for image generation. Options for 'Seed' and 'Negative prompt' imply user input to influence the generation process. A dropdown menu labeled 'Sampler: Euler a (default)' suggests the use of different algorithms for image creation, and a slider marked 'Steps: 50 (default)' allows adjustment of the iteration steps in the generation process. Below the settings modal, a 'Save to gallery' button offers the option to preserve the customized output, highlighting the app's capability for detailed personalization in creating AI-generated images." },
     ];
-  return (
-    <Router>
-      <div className="App">
-        <Banner />
-        <RedirectHandler /> {/* This ensures RedirectHandler is within Router context */}
-        <Routes>
-          <Route path="/" element={
-            <>
-              <LogoAndStoreButtons />
-              <Description />
-              <ExpandableImageGallery images={galleryImages} />
-              <Features />
-              <Reviews />
-            </>
-          } />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/privacy" element={<TermsOfServicePage />} />
-          <Route path="/privacy.html" element={<TermsOfServicePage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </div>
-    </Router>
-  );
+    return (
+      <Router>
+        <div className="App">
+          <Banner />
+          <RedirectHandler /> {/* This ensures RedirectHandler is within Router context */}
+          <Routes>
+            <Route path="/" element={
+              <>
+                <LogoAndStoreButtons />
+                <Description />
+                <ExpandableImageGallery images={galleryImages} />
+                <Features />
+                <Reviews />
+              </>
+            } />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/privacy" element={<TermsOfServicePage />} />
+            <Route path="*" element={<NotFoundPage />} /> {/* This is a catch-all route */}
+          </Routes>
+        </div>
+      </Router>
+    );
 }
 
 export default App;
